@@ -17,7 +17,7 @@ int main() {
 		
 		float outputForeign = 0; //상대국으로 환전한 결과 
 		int outputForeignFinal = 0; //고객에게 줄 돈 
-		float dynamicRate = 0; // 환전 계산에 쓸 환율 
+		float dynamicRate = 0; // 환전 계산에 쓸 가변 환율
 		
 		int inputWon = 0; //입력 받는 원 
 		int selectCurrency = 0; //외화 선택 
@@ -31,18 +31,22 @@ int main() {
 		scanf("%d", &selectCurrency);
 		printf("\n");
 		
-		if (selectCurrency == 1) {
-			dynamicRate = USD_RATE;
-		} else if (selectCurrency == 2) {
-			dynamicRate = JPY_RATE;
-		} else if (selectCurrency == 3) {
-			dynamicRate = EUR_RATE;
-		} else if (selectCurrency == 4) {
-			dynamicRate = CNY_RATE;
-		} else if (selectCurrency == 5) {
-			dynamicRate = GBP_RATE;
-		}else {
-			printf("잘못된 입력입니다.");
+		switch(selectCurrency) {
+			case 1:
+				dynamicRate = USD_RATE;
+				break;
+			case 2:
+				dynamicRate = JPY_RATE;
+				break;
+			case 3:
+				dynamicRate = EUR_RATE;
+				break;
+			case 4:
+				dynamicRate = CNY_RATE;
+				break;
+			case 5:
+				dynamicRate = GBP_RATE;
+				break;
 		}
 		
 		outputForeign = inputWon / dynamicRate;
