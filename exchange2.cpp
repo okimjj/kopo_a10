@@ -15,8 +15,8 @@ int main() {
 		int changeCount50 = 0;
 		int changeCount10 = 0;
 		
-		float outputForeign = 0;
-		int outputForeignFinal = 0;
+		float outputForeign = 0; //상대국으로 환전한 결과 
+		int outputForeignFinal = 0; //고객에게 줄 돈 
 		float dynamicRate = 0; // 환전 계산에 쓸 환율 
 		
 		int inputWon = 0; //입력 받는 원 
@@ -58,7 +58,7 @@ int main() {
 		changeCount10 = wonChange % 1000 % 500 % 100 % 50 / 10;
 		
 		printf("***************************\n");
-		printf("%d 원 -> %d", inputWon, outputForeignFinal);
+		printf("\n%d 원 -> %d", inputWon, outputForeignFinal);
 		switch (selectCurrency) {
 			case 1:
 				printf (" 달러\n");
