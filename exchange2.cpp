@@ -17,10 +17,11 @@ int main() {
 		
 		float outputForeign = 0;
 		int outputForeignFinal = 0;
+		float dynamicRate = 0; // 환전 계산에 쓸 환율 
 		
 		int inputWon = 0; //입력 받는 원 
 		int selectCurrency = 0; //외화 선택 
-		float dynamicRate = 0; // 환전 계산에 쓸 환율 
+		
 		
 		
 		printf("환전을 원하는 원화 금액을 입력해주세요: ");
