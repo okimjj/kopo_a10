@@ -8,21 +8,20 @@ int main() {
 		const float CNY_RATE = 193.94; //위안 환율 
 		const float GBP_RATE = 1612.21; //파운드 환율 
 		
-		int wonChange = 0;  //거스름돈 
+		int inputWon = 0; //받는 원화 금액 
+		int selectCurrency = 0; //외화 선택
+		
+		int wonChange = 0;  //원화 거스름돈 
 		int changeCount1000 = 0; //거스름돈 화폐 개수 
 		int changeCount500 = 0;
 		int changeCount100 = 0;
 		int changeCount50 = 0;
 		int changeCount10 = 0;
 		
-		float outputForeign = 0; //상대국으로 환전한 결과 
-		int outputForeignFinal = 0; //고객에게 줄 돈 
-		float dynamicRate = 0; // 환전 계산에 쓸 가변 환율
+		float outputForeign = 0; //상대국으로 환전한 결과
+		int outputForeignFinal = 0; //환전한 상대국 금액 소수점 절삭
 		
-		int inputWon = 0; //입력 받는 원 
-		int selectCurrency = 0; //외화 선택 
-		
-		
+		float dynamicRate = 0;
 		
 		printf("환전을 원하는 원화 금액을 입력해주세요: ");
 		scanf("%d", &inputWon);
@@ -31,7 +30,7 @@ int main() {
 		scanf("%d", &selectCurrency);
 		printf("\n");
 		
-		switch(selectCurrency) {
+		switch(selectCurrency) { // 환율 선택 스위치 
 			case 1:
 				dynamicRate = USD_RATE;
 				break;
@@ -54,13 +53,14 @@ int main() {
 		wonChange = outputForeign * 100;
 		wonChange = ((wonChange % 100) * dynamicRate) / 100;
 		wonChange = wonChange - (wonChange % 10);
-		
+
 		changeCount1000 = wonChange / 1000;
 		changeCount500 = wonChange % 1000 / 500;
 		changeCount100 = wonChange % 1000 % 500 / 100;
 		changeCount50 = wonChange % 1000 % 500 % 100 / 50;
 		changeCount10 = wonChange % 1000 % 500 % 100 % 50 / 10;
 		
+		//출력 
 		printf("***************************\n");
 		printf("\n%d 원 -> %d", inputWon, outputForeignFinal);
 		switch (selectCurrency) {
