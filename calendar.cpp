@@ -1,29 +1,29 @@
-#include <stdio.h> 
+#include <stdio.h>
 
-int main() {
-	int year; //ÀÔ·Â ¿¬µµ 
-	int month; //ÀÔ·Â ¿ù
-	int daysFromStart = 0; //1900³â 1¿ù1ÀÏºÎÅÍ ÀÔ·Â¿ù±îÁöÀÇ ÀÏ¼ö
-	int firstOfMonth; // ÀÔ·Â¿ù 1ÀÏÀÇ ½ÃÀÛ ¿äÀÏ 
-	int daysOfMonth[13] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}; //°¢¿ù ÃÑ ÀÏ¼ö , °è»ê ÆíÀÇ À§ÇØ 0ÀÚ¸®´Â 0À¸·Î
-	int daysThisYear; //´ç³â 1/1 ~ ´ç¿ù  Àü ¸»ÀÏ±îÁöÀÇ ÀÏ¼ö
-	int leapCount; //À±³â Ä«¿îÅÍ 
+int main () {
+	int year;
+	int month;
+	int daysFromStart = 0;
+	int daysThisYear;
+	int daysOfMonth[13] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+	int leapCount = 0;
+	int firstOfMonth;
 	
-	printf("¿¬µµ ÀÔ·Â: ");
+	printf("ì—°ë„ ì…ë ¥: ");
 	scanf("%d", &year);
-	printf("¿ù ÀÔ·Â: ");
+	printf("ì›” ì…ë ¥: ");
 	scanf("%d", &month);
 	
-	if (year % 4 == 0 && year % 100 !=0 || year % 400 == 0) {
+	if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) { //ìœ¤ë…„ 2ì›” ë§ì¼ ë³€ê²½
 		daysOfMonth[2] = 29;
 	}
 	
-	for (int indexA = 1; indexA < month; indexA++) {
+	for (int indexA = 0; indexA < month; indexA++) {// ì…ë ¥ ë°›ì€ ì—°ì›”ì˜ ì—°ì´ˆë¶€í„° ì§€ë‚œ ì›”ë§ê¹Œì§€ì˜ ì´ ì¼ìˆ˜
 		daysThisYear = daysThisYear + daysOfMonth[indexA];
 	}
 	
-	for (int indexB = 1900; indexB <= year; indexB++) {
-		if (indexB % 4 == 0 && indexB % 100 != 0 || indexB % 400 == 0) {
+	for (int indexB = 1900; indexB < year; indexB++) { //ìœ¤ë…„ì´ ì¹´ìš´íŠ¸ ë  ë•Œ ë§ˆë‹¤ 1ì¼ì”© ì¶”ê°€
+		if (indexB %4 == 0 && indexB % 100 != 0 || indexB % 100 == 0) {
 			leapCount ++;
 		}
 	}
@@ -33,13 +33,13 @@ int main() {
 	firstOfMonth = daysFromStart % 7;
 	
 	//output
-	printf("========%d³â %d¿ù=========\n", year, month);
-	printf("ÀÏ\t¿ù\tÈ­\t¼ö\t¸ñ\t±İ\tÅä\n");
-	for (int indexC = 0; indexC < firstOfMonth; indexC++ ) {
+	printf("========%dë…„ %dì›”========\n", year, month);
+	printf("ì¼\tì›”\tí™”\tìˆ˜\tëª©\tê¸ˆ\tí† \n");
+	for (int indexC = 0; indexC < firstOfMonth; indexC++) {
 		printf("\t");
 	}
 	
-	for (int day = daysFromStart; day < daysFromStart + daysOfMonth[month]; day ++) {
+	for (int day = daysFromStart; day < daysFromStart + daysOfMonth[month]; day++) {
 		if (day % 7 == 6) {
 			printf("%d\n", day - daysFromStart + 1);
 		} else {
