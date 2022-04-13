@@ -18,7 +18,7 @@ int main () {
 		daysOfMonth[2] = 29;
 	}
 	
-	for (int indexA = 0; indexA < month; indexA++) {// 입력 받은 연월의 연초부터 지난 월말까지의 총 일수
+	for (int indexA = 0; indexA < month; indexA++) {// 입력 받은 연월의 연초부터 지난 월말까지 총 일수
 		daysThisYear = daysThisYear + daysOfMonth[indexA];
 	}
 	
@@ -28,22 +28,22 @@ int main () {
 		}
 	}
 	
-	daysFromStart = ((year - 1900) * 365) + daysThisYear + leapCount;
+	daysFromStart = ((year - 1900) * 365) + daysThisYear + leapCount; //1900년 1월1일부터 지금까지 총 일수
 	
-	firstOfMonth = daysFromStart % 7;
+	firstOfMonth = daysFromStart % 7; // 총 일수 / 7의 나머지
 	
 	//output
 	printf("========%d년 %d월========\n", year, month);
 	printf("일\t월\t화\t수\t목\t금\t토\n");
-	for (int indexC = 0; indexC < firstOfMonth; indexC++) {
+	for (int indexC = 0; indexC < firstOfMonth; indexC++) { //첫번째 요일 전까지 공백 추가
 		printf("\t");
 	}
 	
 	for (int day = daysFromStart; day < daysFromStart + daysOfMonth[month]; day++) {
-		if (day % 7 == 6) {
-			printf("%d\n", day - daysFromStart + 1);
+		if (day % 7 == 6) { //day % 7 == 0이 일요일일 때 day % 7 == 6은 토요일 
+			printf("%d\n", day - daysFromStart + 1); //토요일이면 일자를 입력하고 개행
 		} else {
-			printf("%d\t", day - daysFromStart + 1);
+			printf("%d\t", day - daysFromStart + 1);//나머지 요일은 일자 입력하고 탭  
 		}
 	}
 	return 0;
