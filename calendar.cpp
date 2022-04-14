@@ -14,7 +14,7 @@ int main () {
 	printf("월 입력: ");
 	scanf("%d", &month);
 	
-	if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) { //윤년 2월 말일 변경
+	if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) { //윤년 2월 말일 변경
 		daysOfMonth[2] = 29;
 	}
 	
@@ -23,12 +23,13 @@ int main () {
 	}
 	
 	for (int indexB = 1900; indexB < year; indexB++) { //윤년이 카운트 될 때 마다 1일씩 추가
-		if (indexB %4 == 0 && indexB % 100 != 0 || indexB % 100 == 0) {
-			leapCount ++;
+		if ((indexB % 4 == 0 && indexB % 100 != 0) || indexB % 400 == 0) {
+			leapCount++;
+			
 		}
 	}
 	
-	daysFromStart = ((year - 1900) * 365) + daysThisYear + leapCount; //1900년 1월1일부터 지금까지 총 일수
+	daysFromStart = ((year - 1900) * 365) + daysThisYear + leapCount + 1; //1900년 1월1일부터 이번 달 1일까지 총 일수
 	
 	firstOfMonth = daysFromStart % 7; // 총 일수 / 7의 나머지
 	
